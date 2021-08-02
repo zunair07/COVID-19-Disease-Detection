@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %} {% endblock %}
+{% block head %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/forgetpwd.js') }}"></script>
+
+<style>
+  body {
+    background-image: url("{{url_for('static',filename='images/bold.jpg')}}");
+  }
+
+  #r1 {
+    margin-left: 33%;
+
+  }
+  .form2 {
+        max-width: 550px;
+        margin: 0 auto;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 30px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+
+    }
+
+  #failed {
+    margin-top: 5%;
+    margin-left: 40%;
+    background-color: rgb(219, 22, 22);
+
+    font-size: large;
+  }
+
+  body {
+    background-color: whitesmoke;
+  }
+
+  h3 {
+    color: black;
+    font-weight: bolder;
+    background: plum;
+    padding: 8px;
+    border-radius: 80%;
+  }
+
+  .top {
+    color: white;
+    font-weight: bolder;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<h3 align="center">Reset Password</h3>
+
+<br>
+<div class="row" id="r1">
+  <div class="col-md-6 col-md-offset-3">
+    <form align='center' class="form2">
+        <div class="form-group">
+          <label class="top">Email:</label>
+          <input type="text" class="form-control" name="email" id="email" required>
+          <br>
+          <div id="errorAlert-email" class="alert alert-danger" role="alert" style="display:none;"></div>
+        </div>
+        <div class="form-group">
+          <label class="top">Enter Your Answer:</label>
+          <div style="background-color: rgb(65, 172, 172);">
+            <p style="color: aliceblue; font-weight: bolder;">*Your Most Favourite City in the World ?</p></div>
+          <input type="text" class="form-control" name="recovery_ans" id="recovery_ans" required>
+          <br>
+          <div id="errorAlert-recovery_ans" class="alert alert-danger" role="alert" style="display:none;"></div>
+        </div>
+
+        <div style="background-color: rgb(65, 172, 172);">
+            <p style="color: aliceblue; font-weight: bolder;">*If & only if your answer is correct your password will be reset!</p></div>
+
+    
+        <div class="form-group">
+          <label class="top">Enter Your New Password:</label>
+          <input type="password" class="form-control" name="password" id="password" required>
+          <br>
+          <div id="errorAlert-password" class="alert alert-danger" role="alert" style="display:none;"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="top">Confirm Password:</label>
+            <input type="password" class="form-control" name="cpassword" id="cpassword" required>
+            <br>
+            <div id="errorAlert-cpassword" class="alert alert-danger" role="alert" style="display:none;"></div>
+          </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Reset Password</button>
+        </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

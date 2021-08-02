@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block title %} Register {% endblock %}
+{% block head %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/reg.js') }}"></script>
+<style>
+  body {
+    background-color: whitesmoke;
+    background-image: url("{{url_for('static',filename='images/bold.jpg')}}");
+  }
+
+  .col-md-6.col-md-offset-3 {
+    width: 95%;
+    top: 50%;
+    padding: 0 50px;
+  }
+
+  /*.form3 {
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 550px;
+  }*/
+  .form2 {
+        max-width: 550px;
+        margin: 0 auto;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 30px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+
+    }
+
+  .checkbox {
+    color: white;
+    font-weight: bolder;
+  }
+
+  .head-back {
+    color: black;
+    font-weight: bolder;
+    background: plum;
+    padding: 8px;
+    border-radius: 60%;
+
+  }
+  
+</style>
+{% endblock %}
+
+{% block body %}
+<h4 class="head-back" align="center">Get Registered</h4>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <form class="form2">
+      <div class="form-group">
+        <label class="checkbox">Name:</label>
+        <input type="text" class="form-control" name="name" id="name" required>
+        <br>
+        <div id="errorAlert-name" class="alert alert-danger" role="alert" style="display:none;"></div>
+      </div>
+      <div class="form-group">
+        <label class="checkbox">Email:</label>
+        <input type="text" class="form-control" name="email" id="email" required>
+        <br>
+        <div id="errorAlert-email" class="alert alert-danger" role="alert" style="display:none;"></div>
+      </div>
+      <div class="form-group">
+        <label class="checkbox">Password:</label>
+        <input type="password" class="form-control" name="password" id="password" required>
+        <br>
+        <div id="errorAlert-password" class="alert alert-danger" role="alert" style="display:none;"></div>
+      </div>
+      <div class="form-group">
+        <label class="checkbox">Confirm Password:</label>
+        <input type="password" class="form-control" name="cpassword" id="cpassword" required>
+        <br>
+        <div id="errorAlert-cpassword" class="alert alert-danger" role="alert" style="display:none;"></div>
+      </div>
+      <div class="form-group">
+        <label class="checkbox">Secret Question</label>
+        <div style="background-color: rgb(65, 172, 172);">
+        <p style="color: aliceblue; font-weight: bolder;">*Your Most Favourite City in the World ?</p></div>
+      
+        <input type="text" class="form-control" name="recovery_ans" id="recovery_ans" required>
+        <br>
+        <div id="errorAlert-recovery_ans" class="alert alert-danger" role="alert" style="display:none;"></div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Register</button>
+      </div>
+      
+    </form>
+  </div>
+</div><br>
+
+{% endblock %}

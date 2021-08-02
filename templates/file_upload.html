@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block title %} Upload X-ray {% endblock %}
+
+{% block head %}
+<style>
+    #success {
+        width: 24rem;
+        height: 15rem;
+        box-shadow: 10px 10px 15px coral;
+        position: relative;
+        margin: 6% auto;
+        border-radius: 1rem;
+        font-weight: bolder;
+        background-color: #12475f;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        font-size: xx-large;
+    }
+
+    #failed {
+        margin-top: 5%;
+        background-color: rgb(219, 22, 22);
+
+        font-size: x-large;
+    }
+
+    body {
+        background-image: url("{{url_for('static',filename='images/bold.jpg')}}");
+    }
+
+    .form1 {
+        max-width: 550px;
+        margin: 0 auto;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 30px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+    }
+   
+
+    #hdn {
+        text-align: center;
+        font-family: sans-serif;
+        font-style: italic;
+        color: navajowhite;
+        border: solid;
+        border-radius: 50%;
+        border-color: burlywood;
+
+    }
+    
+    #hpn {
+        color: black;
+        font-weight: bolder;
+        background: plum;
+        padding: 8px;
+        border-radius: 80%;
+    }
+
+    .row {
+        justify-content: center;
+    }
+
+    #image {
+        font-size: 16px;
+        background: white;
+        border-radius: 50px;
+        box-shadow: 5px 5px 10px black;
+        width: 350px;
+        outline: none;
+    }
+
+    ::-webkit-file-upload-button {
+        color: white;
+        background: #206a5d;
+        padding: 8px;
+        border: none;
+        border-radius: 50px;
+        box-shadow: 1px 0 1px 1px #6b4559;
+        outline: none;
+    }
+
+    ::-webkit-file-upload-button:hover {
+        background: #438a5e;
+    }
+
+    .label {
+        color: white;
+        font-weight: bolder;
+
+    }
+</style>
+{% endblock %}
+{% block body %}
+
+
+<h3 id="hpn" align="center">Please Provide Patient's Chest X-ray Image</h3>
+<br>
+<div class="row">
+
+    
+        {% if not nor and not pos %}
+        <form class="form1" method="POST" enctype="multipart/form-data">
+
+            <label for="image" class="label">Upload X-ray Image Here</label>
+
+            <input type="file" name="img" id="image" />
+
+            <small style="color: red;">{{err}}</small>
+
+            <br>   
+            <button type="submit" class="btn btn-primary" style="width: 110px; border-radius: 25%; font-weight: bold;">Predict</button>
+            {% endif %}
+            <div id="success">
+                <h3 id="hdn">Predicted Result</h3>
+                
+                {% if nor %}
+                <small style="font-size: 16px;">According to our AI Detection Model, The Patient is:  </small>
+                <br>
+                <div style="color: blue ;">{{nor}}</div>
+
+                {% elif pos %}
+                <small style="font-size: 16px;">According to our AI Detection Model, The Patient is:  </small>
+                <br>
+                <div style="color: red ;">{{pos}}</div>
+
+                {% else %}
+                <div style="margin-top: 5%;">
+
+                    <img src="static\images\loading.gif" height="150px" width="190px"/>
+                </div>
+               
+                {% endif %}
+            </div>
+            
+        </form>
+        {% if again %}
+        <br>
+        <p>
+            <a class="btn btn-warning" href="/patientdetails" role="button" style="margin-left: 10%;">{{again}}
+                &raquo;</a>
+        </p>
+        {% endif %}
+   
+</div>
+<br><br><br>
+{% endblock %}

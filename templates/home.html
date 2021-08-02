@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Home Page</title>
+<style>
+    body {
+        background-image: url("{{url_for('static',filename='images/imgs.jpg')}}")
+    }
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+    }
+
+    .container {
+        max-width: 1170px;
+        margin: auto;
+
+
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    ul {
+        list-style: none;
+
+    }
+
+   
+</style>
+{% endblock %}
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<div>
+    <div class="bg-light p-5 rounded" style="background-image: url({{url_for('static',filename='images/ad.jpg')}})">
+        <div class="col-sm-9 mx-auto ">
+            <img src="/static/images/jojo.png">
+
+            <p style='color: #ffffff; font-weight: bold;'>
+
+                    Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.
+                    Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover
+                    without special treatment.
+                    HOW IT SPREADS
+                    The virus that causes COVID-19 is mainly transmitted through droplets generated when an infected
+                    person coughs, sneezes, or exhales. These droplets are too heavy to hang in the air, and quickly
+                    fall on floors or surfaces.
+                    You can be infected by breathing in the virus if you are within close proximity of someone who has
+                    COVID-19, or by touching a contaminated surface and then your eyes, nose or mouth. Here you will be
+                    able to check your results using your x-ray image. Click on the button below.
+               
+            </p>
+            <p>
+
+                <a class="btn btn-warning" href="/patientdetails" role="button">Get Your Prediction
+                    &raquo;</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

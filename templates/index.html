@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/index.js')}}"></script>
+
+<style>
+    body {
+        background-image: url("{{url_for('static',filename='images/bold.jpg')}}");
+    }
+
+    .container2 {
+        width: 95%;
+        top: 50%;
+        padding: 0 50px;
+
+    }
+
+    .form2 {
+        max-width: 550px;
+        margin: 0 auto;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 30px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+
+    }
+
+    .form-control {
+        margin-right: 4%;
+    }
+
+    .form-control,
+    .msg {
+        width: 100%;
+    }
+
+    .input[type="text"] {
+        background: transparent;
+        border: 0;
+        border-bottom: 2px solid whitesmoke;
+        color: white;
+    }
+
+    .input[type="number"] {
+        background: transparent;
+        border: 0;
+        border-bottom: 2px solid whitesmoke;
+        color: white;
+    }
+
+    ::-webkit-input-placeholder {
+        color: grey;
+    }
+
+    .head-back {
+        color: black;
+        font-weight: bolder;
+        background: plum;
+        padding: 8px;
+        border-radius: 50%;
+
+    }
+
+    .lab {
+        color: white;
+        font-weight: bolder;
+        margin-top: 3%;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<!--<h1 align=center>Covid-19 Detector</h1>-->
+<h4 class = "head-back" align="center">Please Provide Patient's Details</h4>
+<!--<div class="container" style="background-image: url({{url_for('static',filename='images/pp.jpg')}})">-->
+<div class="container2">
+    <form id="form2" class="form2">
+
+        <label for="cnic" class="lab">CNIC</label><br>
+        <input type="text" class="input" placeholder="Required Format XXXXX-XXXXXXX-X" name="cnic" id="cnic" required />
+
+        <small id="errorAlert-pcnic" style="display:none; color: red;"> </small>
+
+
+
+        <label for="patientname" class="lab">Patient Name</label><br>
+        <input type="text" class="input" placeholder="Full Name Required" name="name" id="patientname" required />
+
+        <small id="errorAlert-pname" style="display:none; color: red;"></small>
+
+
+
+        <label for="age" class="lab">Age</label><br>
+        <input type="number" class="input" placeholder="Age Should Be In Numbers" name="age" id="age" required />
+
+        <small id="errorAlert-age" style="display:none; color: red;"></small>
+
+
+
+        <label for="contactnum" class="lab">Contact Number</label><br>
+        <input type="number" class="input" placeholder="Contact Number Required" name="contactnum" id="contactnum"
+            required />
+
+        <small id="errorAlert-pcontactnum" style="display:none; color: red;"></small>
+
+
+
+        <label for="gender" class="lab">Gender</label>
+        <select name="gender" id="gender">
+            <option value="None"> None </option>
+            <option value="Male"> Male </option>
+            <option value="Female"> Female </option>
+        </select>
+
+        <small id="errorAlert-gender" style="display:none; color: red;"></small>
+
+
+        <br>
+        <div>
+        <button type="submit" class="btn btn-primary" style="width: 140px; height: 40px; border-radius: 25%;">Next &raquo;</button>
+    </div>
+
+    </form>
+    <div>
+
+
+        <a href="{{ url_for('fileupload_exist') }}"><button class="btn btn-warning"> Patient Already
+                Exists</button></a>
+    </div>
+
+
+</div>
+{% endblock %}
