@@ -1,1 +1,1 @@
-# FYP-COVID_Dectection_CNN
+# COVID-19-Disease-Detection
